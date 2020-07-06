@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GrapplingGun : MonoBehaviour
 {
+    public static GrapplingGun mainGrapplingGun;
     private LineRenderer lr;
     private Vector3 grapplePoint;
     public LayerMask grappleable;
@@ -58,7 +59,7 @@ public class GrapplingGun : MonoBehaviour
         lr.SetPosition(0, guntip.position);
         lr.SetPosition(1, grapplePoint);
     }
-    void StopGrapple()
+    public void StopGrapple()
     {
         lr.positionCount = 0;
         Destroy(joint);

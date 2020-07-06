@@ -8,7 +8,7 @@ public class EnemyControll : MonoBehaviour
 
     public GameObject player;
 
-    public float MobDistRun = 4.0f;
+    public float MobDistRun = 40.0f;
 
     private void Start()
     {

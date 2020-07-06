@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BetterPlayerController : MonoBehaviour
 {
+    public static BetterPlayerController mainBetterPlayerController;
     //Assingables
     public Transform playerCam;
     public Transform orientation;
@@ -105,7 +106,7 @@ public class BetterPlayerController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
-    private void Movement()
+    public void Movement()
     {
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
@@ -181,7 +182,7 @@ public class BetterPlayerController : MonoBehaviour
     }
 
     private float desiredX;
-    private void Look()
+    public void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
@@ -199,7 +200,7 @@ public class BetterPlayerController : MonoBehaviour
         orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
     }
 
-    private void CounterMovement(float x, float y, Vector2 mag)
+    public void CounterMovement(float x, float y, Vector2 mag)
     {
         if (!grounded || jumping) return;
 
@@ -260,7 +261,7 @@ public class BetterPlayerController : MonoBehaviour
     /// <summary>
     /// Handle ground detection
     /// </summary>
-    private void OnCollisionStay(Collision other)
+    public void OnCollisionStay(Collision other)
     {
         //Make sure we are only checking for walkable layers
         int layer = other.gameObject.layer;
@@ -289,7 +290,7 @@ public class BetterPlayerController : MonoBehaviour
         }
     }
 
-    private void StopGrounded()
+    public void StopGrounded()
     {
         grounded = false;
     }
